@@ -5,13 +5,12 @@ from PIL import Image
 import io
 
 app = Flask(__name__)
-CORS(app)  # React Frontend එකට මේකට access දෙන්න
+CORS(app)  
 
-# 1. Model එක Load කරගන්න
-# best.pt file එක app.py තියෙන තැනම තියෙන්න ඕනේ
+
 model = YOLO('best.pt') 
 
-# 2. ඔයාගේ අලුත් වැඩි දියුණු කළ බෙහෙත් විස්තරය
+
 fertilizer_dict = {
     'blister_blight': {
         'sinhala': 'කොපර් ඔක්සික්ලෝරයිඩ් හෝ මැන්කොසෙබ් භාවිතා කරන්න.',
@@ -53,33 +52,32 @@ def predict():
     file = request.files['file']
     
     try:
-        # Image එක කියවාගැනීම
+       
         image = Image.open(io.BytesIO(file.read()))
         
-        # Model එකෙන් Predict කිරීම
+        
         results = model(image)
         
-        # වැඩිම විශ්වාසය (Confidence) තියෙන ලෙඩේ තෝරාගැනීම
-        detected_disease = "healthy" # මුලින් නිරෝගී කියලා හිතමු
+        
+        detected_disease = "healthy"
         highest_conf = 0
         
         for result in results:
             for box in result.boxes:
                 conf = float(box.conf[0])
-                # 50% ට වඩා ෂුවර් නම් විතරක් ගමු
+                
                 if conf > 0.50 and conf > highest_conf:
                     highest_conf = conf
                     cls_id = int(box.cls[0])
                     detected_disease = model.names[cls_id]
         
-        # අදාළ බෙහෙත් විස්තරය Dictionary එකෙන් ගැනීම
-        # (ලෙඩේ නම වැරදි නම් 'healthy' විස්තරය දෙන්න)
+        
         info = fertilizer_dict.get(detected_disease, fertilizer_dict['healthy'])
         
-        # Frontend එකට යවන JSON එක (Updated)
+        
         return jsonify({
             'disease_name': detected_disease,
-            'confidence': round(highest_conf * 100, 2), # ප්‍රතිශතයක් විදියට (95.5%)
+            'confidence': round(highest_conf * 100, 2), 
             'sinhala_advice': info['sinhala'],
             'english_advice': info['msg'],
             'organic_remedy': info.get('organic', '-'),
