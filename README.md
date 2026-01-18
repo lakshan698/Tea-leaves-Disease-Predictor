@@ -7,7 +7,7 @@
 
 A machine learning-based web application designed to detect tea leaf diseases and provide actionable fertilizer/remedy recommendations in both **Sinhala** and **English**. This project aims to help tea planters identify diseases early and treat them effectively using both organic and chemical methods.
 
-##Here How It Looks!!!
+##  Here How It Looks!!!
 
 <img width="827" height="969" alt="image" src="https://github.com/user-attachments/assets/acd81e2b-6cea-4ee9-a2b7-4cb7d5dac1ae" />
 
