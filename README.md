@@ -7,6 +7,11 @@
 
 A machine learning-based web application designed to detect tea leaf diseases and provide actionable fertilizer/remedy recommendations in both **Sinhala** and **English**. This project aims to help tea planters identify diseases early and treat them effectively using both organic and chemical methods.
 
+##Here How It Looks!!!
+
+<img width="827" height="969" alt="image" src="https://github.com/user-attachments/assets/acd81e2b-6cea-4ee9-a2b7-4cb7d5dac1ae" />
+
+
 ## 🚀 Features
 
 * **Real-time Disease Detection:** Identifies diseases like Blister Blight, Red Rust, Gray Blight, Brown Blight, and Healthy leaves.
@@ -35,18 +40,4 @@ A machine learning-based web application designed to detect tea leaf diseases an
 * **Styling:** Tailwind CSS
 * **Functionality:** Image upload, preview, and displaying structured advice.
 
-## 📂 Project Structure
 
-```bash
-Tea-Leaf-Disease-Predictor/
-├── backend/
-│   ├── app.py              # Flask API Server
-│   ├── best.pt             # Trained YOLOv8 Model
-│   ├── requirements.txt    # Python Dependencies
-│   └── ...
-├── frontend/
-│   ├── src/                # React Source Code
-│   ├── public/
-│   ├── tailwind.config.js
-│   └── ...
-└── README.md
