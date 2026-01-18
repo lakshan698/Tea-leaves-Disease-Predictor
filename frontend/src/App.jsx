@@ -6,17 +6,17 @@ function App() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // පින්තූරය තෝරාගත් විට
+ 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setSelectedImage(file);
-      setPreview(URL.createObjectURL(file)); // Preview එක පෙන්වීමට
-      setResult(null); // පරණ result එක අයින් කරන්න
+      setPreview(URL.createObjectURL(file)); 
+      setResult(null); 
     }
   };
 
-  // Backend එකට යැවීම (Predict)
+  
   const handlePredict = async () => {
     if (!selectedImage) return;
 
@@ -25,7 +25,7 @@ function App() {
     formData.append('file', selectedImage);
 
     try {
-      // Flask Backend එකේ URL එක මෙතනට දෙන්න
+      
       const response = await fetch('http://127.0.0.1:5000/predict', {
         method: 'POST',
         body: formData,
